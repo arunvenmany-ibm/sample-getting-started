@@ -36,7 +36,7 @@ public class SystemResource {
 	@Counted(absolute = true, description = "Number of times the properties of a systems is requested")
 	public Response getProperties() {
 		if (!systemConfig.isInMaintenance()) {
-			return Response.ok(System.getProperties()).build();
+			return Response.ok(System.getProperties().entrySet()).build();
 		} else {
 			return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity("ERROR: Service is currently in maintenance.")
 					.build();
